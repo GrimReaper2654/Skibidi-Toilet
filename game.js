@@ -3,8 +3,10 @@
 27/02/2024
  • imported AIcode project
 
-28/02/2024 13:15
+28/02/2024
  • finishd toilet model
+ • reworked collision, bullets, rendering, healthbars
+ • created github repo
 
 ---------------------------------------------------------------------------------------------------------------------
 */
@@ -2330,7 +2332,7 @@ function placeObstacle(objId, r, coords) {
     return 0
 };
 
-function levelSTTDV1() {
+function levelSTDV1() {
     overlay.style.display = 'none';
     const basicWall = 'basicWall';
 
