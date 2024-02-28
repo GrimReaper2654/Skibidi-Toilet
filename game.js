@@ -1330,7 +1330,7 @@ const data = {
         TPS: 60,
         FPS: 60,
     },
-    mech: {
+    mech: { // cameraman
         x: 0,
         y: 0,
         r: 0, // direction of motion
@@ -1622,15 +1622,38 @@ const data = {
                 },
             },
             {
-                id: 'head',
+                id: 'cameraHead',
                 facing: 'turret',
-                type: 'circle', 
-                rOffset: 0,
-                size: 25,
-                scale: {x: 1, y: 1},
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -15, y: -20}, 
+                    {x: 15, y: -20}, 
+                    {x: 20, y: 20}, 
+                    {x: -20, y: 20}, 
+                ],
+                scale: {x: 1.5, y: 1.5},
                 offset: {x: 0, y: 0},
                 style: {
-                    fill: 'rgba(69, 69, 69, 1)',
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                },
+            },
+            {
+                id: 'cameraHead2',
+                facing: 'turret',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -20, y: 20}, 
+                    {x: -30, y: 35}, 
+                    {x: 30, y: 35}, 
+                    {x: 20, y: 20}, 
+                ],
+                scale: {x: 1.5, y: 1.5},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
                     stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
                 },
             },
