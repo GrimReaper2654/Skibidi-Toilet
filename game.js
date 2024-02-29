@@ -4377,7 +4377,7 @@ const data = {
                                 parts: bullet,
                                 cType: 'point',
                                 cSize: null,
-                                life: 15, 
+                                life: 20, 
                                 dmg: 1,
                             },
                         }
@@ -4413,7 +4413,7 @@ const data = {
                                 parts: bullet,
                                 cType: 'point',
                                 cSize: null,
-                                life: 15, 
+                                life: 20, 
                                 dmg: 1,
                             },
                         }
@@ -4449,7 +4449,7 @@ const data = {
                                 parts: bullet,
                                 cType: 'point',
                                 cSize: null,
-                                life: 15, 
+                                life: 20, 
                                 dmg: 1,
                             },
                         }
@@ -4485,7 +4485,7 @@ const data = {
                                 parts: bullet,
                                 cType: 'point',
                                 cSize: null,
-                                life: 15, 
+                                life: 20, 
                                 dmg: 1,
                             },
                         }
@@ -4521,7 +4521,7 @@ const data = {
                                 parts: bullet,
                                 cType: 'point',
                                 cSize: null,
-                                life: 15, 
+                                life: 20, 
                                 dmg: 1,
                             },
                         }
