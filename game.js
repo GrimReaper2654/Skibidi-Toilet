@@ -2258,7 +2258,7 @@ const data = {
         type: 'tank',
         unitType: 'jetSkibidiToilet',
         hp: 8,
-        value: 100,
+        value: 1000,
         alive: true,
         hitbox: [
             {
@@ -2948,7 +2948,7 @@ const data = {
         type: 'tank',
         unitType: 'laserSkibidiToilet',
         hp: 3,
-        value: 100,
+        value: 300,
         alive: true,
         hitbox: [
             {
@@ -3458,7 +3458,7 @@ const data = {
         type: 'tank',
         unitType: 'mgSkibidiToilet',
         hp: 3,
-        value: 100,
+        value: 500,
         alive: true,
         hitbox: [
             {
@@ -4137,7 +4137,7 @@ const data = {
     },
     template: {
         player: {
-            money: 100000,
+            money: 0,
             upgrades: [
                 {
                     display: 'Error Handling ',
@@ -6388,6 +6388,8 @@ function physics() {
         entities[i].parts = handleShields(entities[i], entities[i].parts);
         if (entities[i].alive) {
             newEntities.push(entities[i]);
+        } else {
+            player.money += entities[i].value;
         }
     }
     entities = newEntities;
