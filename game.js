@@ -3325,7 +3325,7 @@ const data = {
                 type: 'circle', 
                 rOffset: 0,
                 size: 1,
-                scale: {x: 0, y: 0},
+                scale: {x: 1, y: 1},
                 offset: {x: -30, y: -108},
                 style: {
                     fill: 'rgba(0, 0, 0, 0)',
@@ -3369,7 +3369,7 @@ const data = {
                 type: 'circle', 
                 rOffset: 0,
                 size: 1,
-                scale: {x: 0, y: 0},
+                scale: {x: 1, y: 1},
                 offset: {x: 30, y: -108},
                 style: {
                     fill: 'rgba(0, 0, 0, 0)',
@@ -4154,7 +4154,7 @@ const data = {
     },
     template: {
         player: {
-            money: 0,
+            money: 1000000,
             upgrades: [
                 {
                     display: 'Error Handling ',
@@ -6020,8 +6020,8 @@ function shoot(unit, part) {
                     let bullet = Object.assign({}, JSON.parse(JSON.stringify(data.template.physics)), JSON.parse(JSON.stringify(part.cannon.bullet)));
                     bullet.x = unit.x + ((part.offset.x*part.scale.x) * Math.cos(facing) - (part.offset.y*part.scale.y) * Math.sin(facing));
                     bullet.y = unit.y + ((part.offset.x*part.scale.x) * Math.sin(facing) + (part.offset.y*part.scale.y) * Math.cos(facing));
-                    bullet.x += (part.cannon.x*part.scale.x * Math.cos(facing + part.rOffset) - part.cannon.y*part.scale.y * Math.sin(facing + part.rOffset));
-                    bullet.y += (part.cannon.x*part.scale.x * Math.sin(facing + part.rOffset) + part.cannon.y*part.scale.y * Math.cos(facing + part.rOffset));
+                    bullet.x += (part.cannon.x * Math.cos(facing + part.rOffset) - part.cannon.y * Math.sin(facing + part.rOffset));
+                    bullet.y += (part.cannon.x * Math.sin(facing + part.rOffset) + part.cannon.y * Math.cos(facing + part.rOffset));
                     facing += normalDistribution(0, part.cannon.spread);
                     let res = toComponent(bullet.v, facing + part.rOffset);
                     bullet.vx = res.x + unit.vx;
@@ -6035,7 +6035,7 @@ function shoot(unit, part) {
                     /*
                     bullet.vr = part.cannon.bullet.vr;
                     bullet.rDrag = part.cannon.bullet.rDrag;*/
-                    //console.log(bullet);
+                    console.log(bullet);
                     projectiles.push(bullet);
                 }
             }
