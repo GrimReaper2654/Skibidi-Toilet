@@ -4,9 +4,26 @@
  • imported AIcode project
 
 28/02/2024
- • finishd toilet model
+ • added skibidi toilet model
  • reworked collision, bullets, rendering, healthbars
  • created github repo
+ • added laser cannon weapon
+ • added standard skibidi toilet enemy
+ • added fast skibidi toilet enemy
+ • added cameraman model
+
+29/02/2024
+ • added machine gun skibidi toilet enemy
+ • added laser eye skibidi toilet enemy
+ • added pistol weapon
+ • added cannon weapon
+ • added shotgun weapon
+ • added rifle weapon
+ • added sniper weapon
+ • added plasma cannon weapon
+ • added laser cannon model
+ • added upgrades menu
+ • added economy
 
 ---------------------------------------------------------------------------------------------------------------------
 */
@@ -4571,21 +4588,57 @@ const data = {
             LaserCannon: {
                 parts: [
                     {
-                        id: 'Laser Cannon Placeholder',
+                        id: 'laserCannonBarrelSide1',
                         facing: 'turret',
                         type: 'polygon', 
                         rOffset: 0,
                         size: [
-                            {x: -10, y: 0},
-                            {x: 10, y: 0},
-                            {x: 10, y: 30},
-                            {x: -10, y: 30},
-                        ],
-                        scale: {x: 1, y: 1},
-                        offset: {x: 0, y: -100},
+                            {x: -3, y: 0}, 
+                            {x: 3, y: 0}, 
+                            {x: 3, y: -50}, 
+                            {x: -3, y: -50}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 10, y: -70},
                         style: {
-                            fill: 'rgba(150, 150, 150, 1)',
-                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                            fill: 'rgba(190, 190, 190, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelSide2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 0}, 
+                            {x: 3, y: 0}, 
+                            {x: 3, y: -50}, 
+                            {x: -3, y: -50}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -10, y: -70},
+                        style: {
+                            fill: 'rgba(190, 190, 190, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelMain',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 30}, 
+                            {x: 3, y: 30}, 
+                            {x: 3, y: 80}, 
+                            {x: -3, y: 80}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -230},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
                         },
                         cannon: {
                             keybind: 'click',
@@ -4605,6 +4658,172 @@ const data = {
                                 dmg: 2,
                             },
                         }
+                    },
+                    {
+                        id: 'laserCannonDeco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 11, y: 4}, 
+                            {x: 14, y: 4}, 
+                            {x: 14, y: 11}, 
+                            {x: 11, y: 11}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -2, y: -70},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco2.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 11, y: 4}, 
+                            {x: 14, y: 4}, 
+                            {x: 14, y: 11}, 
+                            {x: 11, y: 11}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 52, y: -70},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 14, y: 2.5}, 
+                            {x: 14.5, y: 2}, 
+                            {x: 17.5, y: 2}, 
+                            {x: 18, y: 2.5}, 
+                            {x: 18, y: 12.5}, 
+                            {x: 17.5, y: 13}, 
+                            {x: 14.5, y: 13}, 
+                            {x: 14, y: 12.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -2, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco2.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 14, y: 2.5}, 
+                            {x: 14.5, y: 2}, 
+                            {x: 17.5, y: 2}, 
+                            {x: 18, y: 2.5}, 
+                            {x: 18, y: 12.5}, 
+                            {x: 17.5, y: 13}, 
+                            {x: 14.5, y: 13}, 
+                            {x: 14, y: 12.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 66, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBody',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -11, y: 0}, 
+                            {x: 11, y: 0}, 
+                            {x: 11, y: 14}, 
+                            {x: 9, y: 16}, 
+                            {x: -9, y: 16}, 
+                            {x: -11, y: 14}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 0.5}, 
+                            {x: -9.5, y: 0}, 
+                            {x: 9.5, y: 0}, 
+                            {x: 10, y: 0.5}, 
+                            {x: 10, y: 4.5}, 
+                            {x: 9.5, y: 5}, 
+                            {x: -9.5, y: 5}, 
+                            {x: -10, y: 4.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -117},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 0.5}, 
+                            {x: -9.5, y: 0}, 
+                            {x: 9.5, y: 0}, 
+                            {x: 10, y: 0.5}, 
+                            {x: 10, y: 4.5}, 
+                            {x: 9.5, y: 5}, 
+                            {x: -9.5, y: 5}, 
+                            {x: -10, y: 4.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -138},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 1}, 
+                            {x: -9, y: 0}, 
+                            {x: 9, y: 0}, 
+                            {x: 10, y: 1}, 
+                            {x: 10, y: 8}, 
+                            {x: 9, y: 9}, 
+                            {x: -9, y: 9}, 
+                            {x: -10, y: 8}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -168},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
                     },
                 ]
             },
@@ -5342,16 +5561,14 @@ function addWeapon(unit, weaponID, unitType, slot, keybind='click') {
         }
     }
     unit.parts = nParts;
+    let nOffset = undefined;
     switch (unitType) {
         case 'mech':
             switch (slot) {
                 case 'rightArmMain':
                     invert = true;
                 case 'leftArmMain':
-                    if (weaponID == 'RPG') {
-                        offset = vMath(offset, {x: -40, y: 0}, '+');
-                    }
-                    offset = vMath(offset, {x: -100, y: 0}, '+');
+                    nOffset = {x: -100, y: 0};
                     break;
                 case 'rightArmSide':
                     invert = true;
@@ -5359,12 +5576,12 @@ function addWeapon(unit, weaponID, unitType, slot, keybind='click') {
                     //console.log(weaponID+'SideMounted');
                     //console.log(data.template.weapons[weaponID+'SideMounted']);
                     weapon = JSON.parse(JSON.stringify(data.template.weapons[weaponID+'SideMounted']));
-                    offset = vMath(offset, {x: -150, y: 0}, '+');
+                    nOffset = {x: -150, y: 0};
                     break;
                 case 'headTurret':
                     break;
                 case 'back':
-                    offset = vMath(offset, {x: 0, y: 20}, '+');
+                    nOffset = {x: 0, y: 20};
                     break;
                 default:
                     throw `tf is this slot type! ${slot}`;
@@ -5381,6 +5598,7 @@ function addWeapon(unit, weaponID, unitType, slot, keybind='click') {
     for (let i = 0; i < weapon.parts.length; i++) {
         weapon.parts[i].facing = facing;
         weapon.parts[i].offset = vMath(weapon.parts[i].offset, offset, '+');
+        weapon.parts[i].offset = vMath(weapon.parts[i].offset, nOffset, '+');
         weapon.parts[i].id = `${slot} ${i}`;
         if (invert) {
             if (weapon.parts[i].type == 'polygon') {
@@ -5391,6 +5609,8 @@ function addWeapon(unit, weaponID, unitType, slot, keybind='click') {
             weapon.parts[i].rOffset *= -1;
             weapon.parts[i].offset.x *= -1;
         }
+        weapon.parts[i].offset.x /= weapon.parts[i].scale.x;
+        weapon.parts[i].offset.y /= weapon.parts[i].scale.y;
         unit.parts.push(weapon.parts[i]);
     }
     console.log(unit);
@@ -5798,10 +6018,10 @@ function shoot(unit, part) {
                         facing = unit.mouseR;
                     }
                     let bullet = Object.assign({}, JSON.parse(JSON.stringify(data.template.physics)), JSON.parse(JSON.stringify(part.cannon.bullet)));
-                    bullet.x = unit.x + ((part.offset.x) * Math.cos(facing) - (part.offset.y) * Math.sin(facing));
-                    bullet.y = unit.y + ((part.offset.x) * Math.sin(facing) + (part.offset.y) * Math.cos(facing));
-                    bullet.x += (part.cannon.x * Math.cos(facing + part.rOffset) - (part.cannon.y) * Math.sin(facing + part.rOffset));
-                    bullet.y += ((part.cannon.x) * Math.sin(facing + part.rOffset) + (part.cannon.y) * Math.cos(facing + part.rOffset));
+                    bullet.x = unit.x + ((part.offset.x*part.scale.x) * Math.cos(facing) - (part.offset.y*part.scale.y) * Math.sin(facing));
+                    bullet.y = unit.y + ((part.offset.x*part.scale.x) * Math.sin(facing) + (part.offset.y*part.scale.y) * Math.cos(facing));
+                    bullet.x += (part.cannon.x*part.scale.x * Math.cos(facing + part.rOffset) - part.cannon.y*part.scale.y * Math.sin(facing + part.rOffset));
+                    bullet.y += (part.cannon.x*part.scale.x * Math.sin(facing + part.rOffset) + part.cannon.y*part.scale.y * Math.cos(facing + part.rOffset));
                     facing += normalDistribution(0, part.cannon.spread);
                     let res = toComponent(bullet.v, facing + part.rOffset);
                     bullet.vx = res.x + unit.vx;
