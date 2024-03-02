@@ -4,13 +4,13 @@
  • imported AIcode project
 
 28/02/2024
- • added skibidi toilet model (based of skibidi toilet from skibidi toilet)
+ • created skibidi toilet model (based of skibidi toilet from skibidi toilet)
  • reworked collision, bullets, rendering, healthbars
  • created github repo
- • added laser cannon weapon
+ • added laser cannon weapon (based of laser cannon from bloons tower defence 5)
  • added standard skibidi toilet enemy
  • added fast skibidi toilet enemy
- • added cameraman model (based of cameraman from skibidi toilet)
+ • created cameraman model (based of cameraman from skibidi toilet)
 
 29/02/2024
  • added machine gun skibidi toilet enemy
@@ -20,14 +20,21 @@
  • added shotgun weapon
  • added rifle weapon
  • added sniper weapon
- • added plasma cannon weapon (based of laser cannon from bloons tower defence 5)
- • added laser cannon model
+ • added plasma cannon weapon (based of plsama blasts from bloons tower defence 6)
+ • created laser cannon model (based of laser cannon from bloons tower defence 5)
  • added upgrades menu
  • added economy
 
 01/03/2024
- • added heavy sniper model (based of U-Marksman from starblast.io)
+ • created heavy sniper model (based of U-Marksman from starblast.io)
 
+2/03/2024
+ • imported rifle model 
+ • created plasma cannon model
+ • added railgun
+ • imported railgun model
+ • changed sniper bullet to laser
+ 
 
 ---------------------------------------------------------------------------------------------------------------------
 */
@@ -1384,15 +1391,58 @@ const sniperShot = [
         type: 'polygon', 
         rOffset: 0,
         size: [
-            {x: -8, y: 5},
-            {x: 0, y: -20},
-            {x: 8, y: 5},
+            {x: -10, y: 9},
+            {x: -10, y: -24},
+            {x: 0, y: -27},
+            {x: 10, y: -24},
+            {x: 10, y: 9},
+            {x: 0, y: 12},
         ],
         scale: {x: 1, y: 1},
         offset: {x: 0, y: 0},
         style: {
-            fill: 'rgba(255, 150, 100, 1)',
-            stroke: {colour: 'rgba(230, 135, 90, 1)', width: 2},
+            fill: 'rgba(255, 0, 0, 0.8)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+        },
+    },
+    {
+        id: 'sniperShotInner',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: -6, y: 5},
+            {x: -6, y: -20},
+            {x: 0, y: -23},
+            {x: 6, y: -20},
+            {x: 6, y: 5},
+            {x: 0, y: 8},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(255, 255, 255, 0.9)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+        },
+    },
+    {
+        id: 'sniperShotGlow',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: -18, y: 15},
+            {x: -18, y: -30},
+            {x: 0, y: -33},
+            {x: 18, y: -30},
+            {x: 18, y: 15},
+            {x: 0, y: 18},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(255, 0, 0, 0.2)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
         },
     },
 ];
@@ -1439,7 +1489,90 @@ const plasmaBlast = [
     },
 ];
 
-const data = {
+const railDart = [
+    {
+        id: 'railDart',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: -4, y: 0},
+            {x: 4, y: 0},
+            {x: 4, y: -8},
+            {x: 2, y: -10},
+            {x: 2, y: -35},
+            {x: 0, y: -40},
+            {x: -2, y: -35},
+            {x: -2, y: -10},
+            {x: -4, y: -8},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(0, 0, 0, 1)',
+            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+        },
+    },
+];
+
+const railBeam = [
+    {
+        id: 'beamOutline',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: 18, y: 0},
+            {x: -18, y: 0},
+            {x: -18, y: -2500},
+            {x: 18, y: -2500},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(0, 200, 255, 0.7)',
+            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+        },
+    },
+    {
+        id: 'beamCore',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: 10, y: 0},
+            {x: -10, y: 0},
+            {x: -10, y: -2500},
+            {x: 10, y: -2500},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(255, 255, 255, 1)',
+            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+        },
+    },
+    {
+        id: 'beamGlow',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: 30, y: 0},
+            {x: -30, y: 0},
+            {x: -30, y: -2500},
+            {x: 30, y: -2500},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(0, 200, 255, 0.2)',
+            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+        },
+    },
+];
+
+var data = {
     constants: {
         zoom: 0.5,
         TPS: 60,
@@ -1458,7 +1591,7 @@ const data = {
         tr: 360 / 60 / 180 * Math.PI, // rotation of turret (main body)
         keyboard: [],
         aimPos: {x: 69, y: 69},
-        collisionR: 500,
+        collisionR: 2100,
         groundCollisionR: 80,
         tallCollisionR: 150,
         directControl: false,
@@ -1795,12 +1928,12 @@ const data = {
         vx: 0,
         vy: 0,
         mouseR: 0, // current Aim
-        v: 6, // top speed
+        v: 7, // top speed
         tr: 360 / 60 / 180 * Math.PI, // rotation of turret (main body)
         vr: Math.PI/120,
         keyboard: [],
         aimPos: {x: 69, y: 69},
-        collisionR: 400,
+        collisionR: 2100,
         groundCollisionR: 0,
         tallCollisionR: 0,
         isMoving: false,
@@ -1809,7 +1942,7 @@ const data = {
         type: 'tank',
         unitType: 'skibidiToilet',
         hp: 5,
-        value: 100,
+        value: 50,
         alive: true,
         hitbox: [
             {
@@ -2265,12 +2398,12 @@ const data = {
         vx: 0,
         vy: 0,
         mouseR: 0, // current Aim
-        v: 12, // top speed
+        v: 14, // top speed
         tr: 360 / 60 / 180 * Math.PI, // rotation of turret (main body)
         vr: Math.PI/180,
         keyboard: [],
         aimPos: {x: 69, y: 69},
-        collisionR: 400,
+        collisionR: 2100,
         groundCollisionR: 0,
         tallCollisionR: 0,
         isMoving: false,
@@ -2279,7 +2412,7 @@ const data = {
         type: 'tank',
         unitType: 'jetSkibidiToilet',
         hp: 8,
-        value: 1000,
+        value: 400,
         alive: true,
         hitbox: [
             {
@@ -2955,12 +3088,12 @@ const data = {
         vx: 0,
         vy: 0,
         mouseR: 0, // current Aim
-        v: 3, // top speed
+        v: 7, // top speed
         tr: 360 / 60 / 180 * Math.PI, // rotation of turret (main body)
         vr: Math.PI/360,
         keyboard: [],
         aimPos: {x: 69, y: 69},
-        collisionR: 400,
+        collisionR: 2100,
         groundCollisionR: 0,
         tallCollisionR: 0,
         isMoving: false,
@@ -2969,7 +3102,7 @@ const data = {
         type: 'tank',
         unitType: 'laserSkibidiToilet',
         hp: 3,
-        value: 300,
+        value: 100,
         alive: true,
         hitbox: [
             {
@@ -3465,12 +3598,12 @@ const data = {
         vx: 0,
         vy: 0,
         mouseR: 0, // current Aim
-        v: 4, // top speed
+        v: 8, // top speed
         tr: 360 / 60 / 180 * Math.PI, // rotation of turret (main body)
         vr: Math.PI/90,
         keyboard: [],
         aimPos: {x: 69, y: 69},
-        collisionR: 400,
+        collisionR: 2100,
         groundCollisionR: 0,
         tallCollisionR: 0,
         isMoving: false,
@@ -3479,7 +3612,7 @@ const data = {
         type: 'tank',
         unitType: 'mgSkibidiToilet',
         hp: 3,
-        value: 500,
+        value: 150,
         alive: true,
         hitbox: [
             {
@@ -3592,7 +3725,7 @@ const data = {
                     keybind: 'click',
                     x: 0,
                     y: 0,
-                    reload: {c: 0, t: 20},
+                    reload: {c: 0, t: 15},
                     spread: Math.PI/48,
                     bullet: {
                         v: 15,
@@ -3628,7 +3761,7 @@ const data = {
                     keybind: 'click',
                     x: 0,
                     y: 0,
-                    reload: {c: 0, t: 20},
+                    reload: {c: 0, t: 15},
                     spread: Math.PI/48,
                     bullet: {
                         v: 15,
@@ -4156,9 +4289,479 @@ const data = {
         ],
         effects: [],
     },
+    reinforcedSkibidiToilet: { // bite attack
+        x: 0,
+        y: 0,
+        r: 0, // direction of motion
+        vx: 0,
+        vy: 0,
+        mouseR: 0, // current Aim
+        v: 6, // top speed
+        tr: 360 / 60 / 180 * Math.PI, // rotation of turret (main body)
+        vr: Math.PI/120,
+        keyboard: [],
+        aimPos: {x: 69, y: 69},
+        collisionR: 2100,
+        groundCollisionR: 0,
+        tallCollisionR: 0,
+        isMoving: false,
+        directControl: false,
+        noClip: false,
+        type: 'tank',
+        unitType: 'reinforcedSkibidiToilet',
+        hp: 15,
+        value: 300,
+        alive: true,
+        hitbox: [
+            {
+                id: 'skibidi toilet',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -25, y: -50}, 
+                    {x: 25, y: -50}, 
+                    {x: 15, y: 30}, 
+                    {x: -15, y: 30}, 
+                ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+            },
+        ],
+        parts: [
+            {
+                id: 'toiletBody',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -20, y: 0}, 
+                    {x: -20, y: 10}, 
+                    {x: -15, y: 25}, 
+                    {x: -5, y: 33}, 
+                    {x: 0, y: 34}, 
+                    {x: 5, y: 33}, 
+                    {x: 15, y: 25}, 
+                    {x: 20, y: 10}, 
+                    {x: 20, y: 0}, 
+                    {x: 17, y: -20}, 
+                    {x: -17, y: -20}, 
+                ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'toiletBowl',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: 0, y: -13}, 
+                    {x: -5, y: -12}, 
+                    {x: -10, y: -9}, 
+                    {x: -13, y: -5}, 
+                    {x: -15, y: 5}, 
+                    {x: -13, y: 17}, 
+                    {x: -10, y: 23}, 
+                    {x: -5, y: 27}, 
+                    {x: 0, y: 28}, 
+                    {x: 5, y: 27}, 
+                    {x: 10, y: 23}, 
+                    {x: 13, y: 17}, 
+                    {x: 15, y: 5}, 
+                    {x: 13, y: -5}, 
+                    {x: 10, y: -9}, 
+                    {x: 5, y: -12}, 
+                ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(150, 150, 150, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'toiletBowlShade',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: 0, y: -13}, 
+                    {x: -5, y: -12}, 
+                    {x: -10, y: -9}, 
+                    {x: -13, y: -5}, 
+                    {x: -15, y: 5}, 
+                    {x: -13, y: 9}, 
+                    {x: -10, y: 12}, 
+                    {x: -5, y: 14}, 
+                    {x: 0, y: 15}, 
+                    {x: 5, y: 14}, 
+                    {x: 10, y: 12}, 
+                    {x: 13, y: 9}, 
+                    {x: 15, y: 5}, 
+                    {x: 13, y: -5}, 
+                    {x: 10, y: -9}, 
+                    {x: 5, y: -12}, 
+                ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(0, 0, 0, 0.2)',
+                    stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+                },
+            },
+            {
+                id: 'toiletDeco1',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: 0,
+                size: [
+                    {x: -12, y: 7}, 
+                    {x: -12, y: -7}, 
+                    {x: 12, y: -7}, 
+                    {x: 12, y: 7}, 
+                ],
+                scale: {x: 1, y: 1},
+                offset: {x: 50, y: 75},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'toiletDeco2',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: 0,
+                size: [
+                    {x: -12, y: 7}, 
+                    {x: -12, y: -7}, 
+                    {x: 12, y: -7}, 
+                    {x: 12, y: 7}, 
+                ],
+                scale: {x: 1, y: 1},
+                offset: {x: -50, y: 75},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'waterTankSide',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -17, y: -20}, 
+                    {x: -25, y: -35}, 
+                    {x: 25, y: -35}, 
+                    {x: 17, y: -20}, 
+                    ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(150, 150, 150, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'waterTankTop',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -25, y: -35}, 
+                    {x: -25, y: -55}, 
+                    {x: 25, y: -55}, 
+                    {x: 25, y: -35}, 
+                ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(165, 165, 165, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'flushButton',
+                facing: 'body',
+                type: 'circle', 
+                rOffset: 0,
+                size: 20,
+                scale: {x: 1, y: 1},
+                offset: {x: 0, y: 180},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'waterTankShade',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -23, y: -35}, 
+                    {x: -20, y: -41}, 
+                    {x: -15, y: -44}, 
+                    {x: -5, y: -48}, 
+                    {x: 5, y: -48}, 
+                    {x: 15, y: -44}, 
+                    {x: 20, y: -41}, 
+                    {x: 23, y: -35}, 
+                ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(0, 0, 0, 0.1)',
+                    stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+                },
+            },
+            {
+                id: 'toiletSeat',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -18, y: -20}, 
+                    {x: -23, y: -25}, 
+                    {x: -24, y: -30}, 
+                    {x: -22, y: -35}, 
+                    {x: -20, y: -38}, 
+                    {x: -15, y: -41}, 
+                    {x: -5, y: -43}, 
+                    {x: 5, y: -43}, 
+                    {x: 15, y: -41}, 
+                    {x: 20, y: -38}, 
+                    {x: 22, y: -35}, 
+                    {x: 24, y: -30}, 
+                    {x: 23, y: -25}, 
+                    {x: 18, y: -20}, 
+                ],
+                scale: {x: 4, y: 4},
+                offset: {x: 0, y: 0},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'toiletSeatInner',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -18, y: -20}, 
+                    {x: -23, y: -25}, 
+                    {x: -24, y: -30}, 
+                    {x: -22, y: -35}, 
+                    {x: -20, y: -38}, 
+                    {x: -15, y: -41}, 
+                    {x: -5, y: -43}, 
+                    {x: 5, y: -43}, 
+                    {x: 15, y: -41}, 
+                    {x: 20, y: -38}, 
+                    {x: 22, y: -35}, 
+                    {x: 24, y: -30}, 
+                    {x: 23, y: -25}, 
+                    {x: 18, y: -20}, 
+                ],
+                scale: {x: 3, y: 3},
+                offset: {x: 0, y: 7},
+                style: {
+                    fill: 'rgba(160, 160, 160, 1)',
+                    stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                },
+            },
+            {
+                id: 'toiletSeatDeco1',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI/3,
+                size: [
+                    {x: -12, y: 7}, 
+                    {x: -12, y: -7}, 
+                    {x: 12, y: -7}, 
+                    {x: 12, y: 7}, 
+                ],
+                scale: {x: 1, y: 1},
+                offset: {x: -77, y: 130},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(150, 150, 150, 1)', width: 5},
+                },
+            },
+            {
+                id: 'toiletSeatDeco2',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: -Math.PI/3,
+                size: [
+                    {x: -12, y: 7}, 
+                    {x: -12, y: -7}, 
+                    {x: 12, y: -7}, 
+                    {x: 12, y: 7}, 
+                ],
+                scale: {x: 1, y: 1},
+                offset: {x: 77, y: 130},
+                style: {
+                    fill: 'rgba(175, 175, 175, 1)',
+                    stroke: {colour: 'rgba(150, 150, 150, 1)', width: 5},
+                },
+            },
+            {
+                id: 'head',
+                facing: 'body',
+                type: 'circle', 
+                rOffset: 0,
+                size: 50,
+                scale: {x: 1, y: 1},
+                offset: {x: 0, y: -20},
+                style: {
+                    fill: 'rgba(235, 197, 139, 1)',
+                    stroke: {colour: 'rgba(191, 140, 84, 1)', width: 5},
+                },
+                cannon: {
+                    keybind: 'click',
+                    x: 0,
+                    y: 0,
+                    reload: {c: 0, t: 120},
+                    spread: 0,
+                    bullet: {
+                        v: 0,
+                        vr: 0,
+                        vDrag: 1,
+                        rDrag: 1,
+                        parts: skibidiHead,
+                        cType: 'line',
+                        cSize: {
+                            start: {x: 0, y: -100},
+                            end: {x: 0, y: -400},
+                        },
+                        life: 12, 
+                        dmg: 2,
+                        persistent: true,
+                    },
+                }
+            },
+            {
+                id: 'eye1',
+                facing: 'body',
+                type: 'circle', 
+                rOffset: -Math.PI/6,
+                size: 8,
+                scale: {x: 1.2, y: 1},
+                offset: {x: -29, y: -35},
+                style: {
+                    fill: 'rgba(255, 255, 255, 1)',
+                    stroke: {colour: 'rgba(0, 0, 0, 0.7)', width: 1},
+                },
+            },
+            {
+                id: 'eye2',
+                facing: 'body',
+                type: 'circle', 
+                rOffset: Math.PI/6,
+                size: 8,
+                scale: {x: 1.2, y: 1},
+                offset: {x: 29, y: -35},
+                style: {
+                    fill: 'rgba(255, 255, 255, 1)',
+                    stroke: {colour: 'rgba(0, 0, 0, 0.7)', width: 1},
+                },
+            },
+            {
+                id: 'pupil1',
+                facing: 'body',
+                type: 'circle', 
+                rOffset: -Math.PI/6,
+                size: 4,
+                scale: {x: 1.2, y: 1},
+                offset: {x: -30, y: -38},
+                style: {
+                    fill: 'rgba(0, 0, 0, 1)',
+                    stroke: {colour: 'rgba(0, 0, 0, 0.7)', width: 1},
+                },
+            },
+            {
+                id: 'pupil1',
+                facing: 'body',
+                type: 'circle', 
+                rOffset: Math.PI/6,
+                size: 4,
+                scale: {x: 1.2, y: 1},
+                offset: {x: 30, y: -38},
+                style: {
+                    fill: 'rgba(0, 0, 0, 1)',
+                    stroke: {colour: 'rgba(0, 0, 0, 0.7)', width: 1},
+                },
+            },
+            {
+                id: 'eyebrow1',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: -Math.PI/6,
+                size: [
+                    {x: -12, y: 4}, 
+                    {x: -12, y: -4}, 
+                    {x: 12, y: -4}, 
+                    {x: 12, y: 4}, 
+                ],
+                scale: {x: 1, y: 1},
+                offset: {x: -27, y: -28},
+                style: {
+                    fill: 'rgba(0, 0, 0, 0.6)',
+                    stroke: {colour: 'rgba(150, 150, 150, 0)', width: 5},
+                },
+            },
+            {
+                id: 'eyebrow2',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI/6,
+                size: [
+                    {x: -12, y: 4}, 
+                    {x: -12, y: -4}, 
+                    {x: 12, y: -4}, 
+                    {x: 12, y: 4}, 
+                ],
+                scale: {x: 1, y: 1},
+                offset: {x: 27, y: -28},
+                style: {
+                    fill: 'rgba(0, 0, 0, 0.6)',
+                    stroke: {colour: 'rgba(150, 150, 150, 0)', width: 5},
+                },
+            },
+            {
+                id: 'toiletBowlShade',
+                facing: 'body',
+                type: 'polygon', 
+                rOffset: Math.PI,
+                size: [
+                    {x: -20, y: 0}, 
+                    {x: -15, y: 5}, 
+                    {x: -10, y: 7}, 
+                    {x: 0, y: 8}, 
+                    {x: 10, y: 7}, 
+                    {x: 15, y: 5}, 
+                    {x: 20, y: 0}, 
+                ],
+                scale: {x: 1, y: 1},
+                offset: {x: 0, y: -50},
+                style: {
+                    fill: 'rgba(0, 0, 0, 0.6)',
+                    stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+                },
+            },
+        ],
+        effects: [],
+    },
     template: {
         player: {
-            money: 1000000,
+            money: 0,
             upgrades: [
                 {
                     display: 'Error Handling ',
@@ -4179,18 +4782,52 @@ const data = {
                     var newPlayer = player;
                     let upgrade = newPlayer.upgrades[1];
                     if (upgrade.level == 1) {
-                        upgrade.description = 'Request Backup from HQ';
+                        upgrade.description = 'Request Advanced Weaponry';
+                        upgrade.cost = 1000;
                         for (let i = 0; i < data.upgrades.tier1.length; i++) {
                             newPlayer.upgrades.push(data.upgrades.tier1[i]);
                         }
                     } else if (upgrade.level == 2) {
+                        upgrade.description = 'Request Prototype Weapons';
+                        upgrade.cost = 2500;
+                        for (let i = 0; i < data.upgrades.tier2.length; i++) {
+                            newPlayer.upgrades.push(data.upgrades.tier2[i]);
+                        }
+                    }
+                    else if (upgrade.level == 3) {
+                        upgrade.description = 'Request Backup from HQ';
+                        upgrade.cost = 50000;
+                        for (let i = 0; i < data.upgrades.tier3.length; i++) {
+                            newPlayer.upgrades.push(data.upgrades.tier3[i]);
+                        }
+                    } else if (upgrade.level == 4) {
                         upgrade.locked = true;
                     }
                     newPlayer;
                     `,
                     locked: false,
                     cost: 250, 
-                    increment: {cost: 9750, mode: 'addition'}
+                    increment: {cost: 0, mode: 'addition'}
+                },
+                {
+                    display: 'Repair ',
+                    description: 'Repair your mech to regain 1 hp',
+                    id: 2,
+                    level: 1,
+                    effect: `
+                    var newPlayer = player;
+                    let upgrade = newPlayer.upgrades[2];
+                    newPlayer.hp++;
+                    if (newPlayer.hp > data.mech.hp) {
+                        newPlayer.hp = data.mech.hp;
+                        newPlayer.money += 500;
+                    }
+                    upgrade.level--;
+                    newPlayer;
+                    `,
+                    locked: false,
+                    cost: 500, 
+                    increment: {cost: 0, mode: 'addition'}
                 },
             ],
         },
@@ -4297,10 +4934,10 @@ const data = {
                         type: 'polygon', 
                         rOffset: 0,
                         size: [
-                            {x: -10, y: 0},
-                            {x: 10, y: 0},
-                            {x: 10, y: 30},
-                            {x: -10, y: 30},
+                            {x: -30, y: -10},
+                            {x: 30, y: -10},
+                            {x: 30, y: 30},
+                            {x: -30, y: 30},
                         ],
                         scale: {x: 1, y: 1},
                         offset: {x: 0, y: -100},
@@ -4543,82 +5180,6 @@ const data = {
                                 cType: 'point',
                                 cSize: null,
                                 life: 20, 
-                                dmg: 1,
-                            },
-                        }
-                    },
-                ]
-            },
-            Rifle: {
-                parts: [
-                    {
-                        id: 'Rifle',
-                        facing: 'turret',
-                        type: 'polygon', 
-                        rOffset: 0,
-                        size: [
-                            {x: -10, y: 0},
-                            {x: 10, y: 0},
-                            {x: 10, y: 30},
-                            {x: -10, y: 30},
-                        ],
-                        scale: {x: 1, y: 1},
-                        offset: {x: 0, y: -100},
-                        style: {
-                            fill: 'rgba(150, 150, 150, 1)',
-                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
-                        },
-                        cannon: {
-                            keybind: 'click',
-                            x: 0,
-                            y: 0,
-                            reload: {c: 0, t: 15},
-                            spread: 0,
-                            bullet: {
-                                v: 50,
-                                vr: 0,
-                                vDrag: 0.995,
-                                rDrag: 0,
-                                parts: sniperShot,
-                                cType: 'point',
-                                cSize: null,
-                                life: 45, 
-                                dmg: 1,
-                            },
-                        }
-                    },
-                    {
-                        id: 'Rifle',
-                        facing: 'turret',
-                        type: 'polygon', 
-                        rOffset: 0,
-                        size: [
-                            {x: -10, y: 0},
-                            {x: 10, y: 0},
-                            {x: 10, y: 30},
-                            {x: -10, y: 30},
-                        ],
-                        scale: {x: 1, y: 1},
-                        offset: {x: 0, y: -100},
-                        style: {
-                            fill: 'rgba(150, 150, 150, 1)',
-                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
-                        },
-                        cannon: {
-                            keybind: 'click',
-                            x: 0,
-                            y: 0,
-                            reload: {c: 0, t: 15},
-                            spread: 0,
-                            bullet: {
-                                v: 50,
-                                vr: 0,
-                                vDrag: 0.995,
-                                rDrag: 0,
-                                parts: sniperShot,
-                                cType: 'point',
-                                cSize: null,
-                                life: 45, 
                                 dmg: 1,
                             },
                         }
@@ -4982,7 +5543,7 @@ const data = {
                             keybind: 'click',
                             x: 0,
                             y: 0,
-                            reload: {c: 0, t: 45},
+                            reload: {c: 0, t: 60},
                             spread: 0,
                             bullet: {
                                 v: 75,
@@ -5211,16 +5772,16 @@ const data = {
                         type: 'polygon', 
                         rOffset: 0,
                         size: [
-                            {x: -10, y: 0},
-                            {x: 10, y: 0},
-                            {x: 10, y: 30},
-                            {x: -10, y: 30},
+                            {x: -5, y: 0},
+                            {x: 5, y: 0},
+                            {x: 5, y: 80},
+                            {x: -5, y: 80},
                         ],
                         scale: {x: 1, y: 1},
-                        offset: {x: 0, y: -100},
+                        offset: {x: 0, y: -150},
                         style: {
-                            fill: 'rgba(150, 150, 150, 1)',
-                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                            fill: 'rgba(175, 175, 175, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
                         },
                         cannon: {
                             keybind: 'click',
@@ -5240,6 +5801,793 @@ const data = {
                                 dmg: 0.5,
                             },
                         }
+                    },
+                    {
+                        id: 'Plasma Cannon Base',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -22, y: 0},
+                            {x: 22, y: 0},
+                            {x: 25, y: 30},
+                            {x: -25, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Side 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -18, y: 0},
+                            {x: -15, y: 0},
+                            {x: -12, y: 90},
+                            {x: -28, y: 125},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -170},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Side 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 18, y: 0},
+                            {x: 15, y: 0},
+                            {x: 12, y: 90},
+                            {x: 28, y: 125},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -170},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -140},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -130},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -120},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 9,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow1',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 35,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 25,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow3',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 15,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                ]
+            },
+            Rifle: {
+                parts: [
+                    {
+                        id: 'Rifle Barrel',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 8, y: 200},
+                            {x: -8, y: 200},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -270},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 20},
+                            spread: 0,
+                            bullet: {
+                                v: 50,
+                                vr: 0,
+                                vDrag: 0.995,
+                                rDrag: 0,
+                                parts: sniperShot,
+                                cType: 'point',
+                                cSize: null,
+                                life: 45, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'laser1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 2, y: -100},
+                            {x: 2, y: 0},
+                            {x: 0, y: 0},
+                            {x: 0, y: -100},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 25, y: -180},
+                        style: {
+                            fill: 'rgba(0, 0, 0, 0)',
+                            stroke: {colour: 'rgba(255, 0, 0, 0.2)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'laser2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 2, y: -200},
+                            {x: 2, y: 0},
+                            {x: 0, y: 0},
+                            {x: 0, y: -200},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 25, y: -180},
+                        style: {
+                            fill: 'rgba(0, 0, 0, 0)',
+                            stroke: {colour: 'rgba(255, 0, 0, 0.2)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'laser3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 2, y: -300},
+                            {x: 2, y: 0},
+                            {x: 0, y: 0},
+                            {x: 0, y: -300},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 25, y: -180},
+                        style: {
+                            fill: 'rgba(0, 0, 0, 0)',
+                            stroke: {colour: 'rgba(255, 0, 0, 0.2)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Scope holder',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 8, y: 20},
+                            {x: 25, y: 20},
+                            {x: 25, y: 0},
+                            {x: 8, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -170},
+                        style: {
+                            fill: 'rgba(125, 125, 125, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'Muzzle',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -13, y: -230},
+                            {x: 13, y: -230},
+                            {x: 13, y: -200},
+                            {x: -13, y: -200},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -70},
+                        style: {
+                            fill: 'rgba(100, 100, 100, 1)',
+                            stroke: {colour: '#696969', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Body',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -12, y: 0},
+                            {x: 12, y: 0},
+                            {x: 12, y: 30},
+                            {x: -12, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(120, 120, 120, 1)',
+                            stroke: {colour: '#696969', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Scope',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -5, y: 0},
+                            {x: 5, y: 0},
+                            {x: 5, y: -40},
+                            {x: -5, y: -40},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 25, y: -140},
+                        style: {
+                            fill: 'rgba(100, 100, 100, 1)',
+                            stroke: {colour: '#696969', width: 5},
+                        },
+                    },
+                    {
+                        id: 'ammo',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 0, y: 35},
+                            {x: -25, y: 35},
+                            {x: -20, y: 0},
+                            {x: 0, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: -12, y: -220},
+                        style: {
+                            fill: 'rgba(100, 100, 100, 1)',
+                            stroke: {colour: '#696969', width: 5},
+                        },
+                    }
+                ],
+            },
+            Railgun: {
+                parts: [
+                    {
+                        id: 'glow 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -23+10, y: 0},
+                            {x: -18+10, y: 0},
+                            {x: -18+10, y: -160},
+                            {x: -23+10, y: -160},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -75},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'glow 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 23-10, y: 0},
+                            {x: 18-10, y: 0},
+                            {x: 18-10, y: -160},
+                            {x: 23-10, y: -160},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -75},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'bottom guide rail 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -23+10, y: 0},
+                            {x: -18+10, y: 0},
+                            {x: -18+10, y: -160},
+                            {x: -23+10, y: -160},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -75},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'bottom guide rail 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 23-10, y: 0},
+                            {x: 18-10, y: 0},
+                            {x: 18-10, y: -160},
+                            {x: 23-10, y: -160},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -75},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'deco 0',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 35, y: -20},
+                            {x: -35, y: -20},
+                            {x: -30, y: 0},
+                            {x: 30, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -70},
+                        style: {
+                            fill: 'rgba(100, 100, 100, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'emitter',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -12, y: 20},
+                            {x: 12, y: 20},
+                            {x: 12, y: 30},
+                            {x: -12, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'emitter2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 90},
+                            spread: 0,
+                            bullet: {
+                                v: 0,
+                                maxV: 0,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: [],
+                                cType: 'line',
+                                cSize: {start: {x: 0, y: 0}, end: {x: 0, y: -2500}},
+                                life: 1, 
+                                dmg: 2, 
+                                piercing: true,
+                            },
+                        },
+                    },
+                    {
+                        id: 'emitter3',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 15, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 90},
+                            spread: 0,
+                            bullet: {
+                                v: 0,
+                                maxV: 0,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: [],
+                                cType: 'line',
+                                cSize: {start: {x: 0, y: 0}, end: {x: 0, y: -2500}},
+                                life: 1, 
+                                dmg: 2, 
+                                piercing: true,
+                            },
+                        },
+                    },
+                    {
+                        id: 'emitter4',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: -15, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 90},
+                            spread: 0,
+                            bullet: {
+                                v: 0,
+                                maxV: 0,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: [],
+                                cType: 'line',
+                                cSize: {start: {x: 0, y: 0}, end: {x: 0, y: -2500}},
+                                life: 1, 
+                                dmg: 2, 
+                                piercing: true,
+                            },
+                        },
+                    },
+                    {
+                        id: 'emitter5',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 90},
+                            spread: 0,
+                            bullet: {
+                                v: 0,
+                                maxV: 0,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: railBeam,
+                                cType: 'line',
+                                cSize: {start: {x: 0, y: 0}, end: {x: 0, y: -2500}},
+                                life: 5, 
+                                dmg: 2, 
+                                piercing: true,
+                                persistent: true,
+                            },
+                        },
+                    },
+                    {
+                        id: 'guide rail 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -25, y: 0},
+                            {x: -16, y: 0},
+                            {x: -16, y: -180},
+                            {x: -25, y: -180},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -70},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'guide rail 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 25, y: 0},
+                            {x: 16, y: 0},
+                            {x: 16, y: -180},
+                            {x: 25, y: -180},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -70},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'support1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 23, y: 10},
+                            {x: -23, y: 10},
+                            {x: -23, y: 0},
+                            {x: 23, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'support2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 23, y: 10},
+                            {x: -23, y: 10},
+                            {x: -23, y: 0},
+                            {x: 23, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -130},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'support3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 23, y: 10},
+                            {x: -23, y: 10},
+                            {x: -23, y: 0},
+                            {x: 23, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'support4',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 23, y: 10},
+                            {x: -23, y: 10},
+                            {x: -23, y: 0},
+                            {x: 23, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -190},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'support5',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 23, y: 10},
+                            {x: -23, y: 10},
+                            {x: -23, y: 0},
+                            {x: 23, y: 0},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -220},
+                        style: {
+                            fill: 'rgba(180, 180, 180, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'deco 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 4, y: 0},
+                            {x: -4, y: 0},
+                            {x: -4, y: -120},
+                            {x: 4, y: -120},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: -30, y: -90},
+                        style: {
+                            fill: 'rgba(120, 120, 120, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'deco 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 4, y: 0},
+                            {x: -4, y: 0},
+                            {x: -4, y: -120},
+                            {x: 4, y: -120},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 30, y: -90},
+                        style: {
+                            fill: 'rgba(120, 120, 120, 1)',
+                            stroke: {colour: '#696969', width: 1},
+                        },
+                    },
+                    {
+                        id: 'arm brace 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 8, y: -15},
+                            {x: -8, y: -15},
+                            {x: -5, y: 15},
+                            {x: 5, y: 15},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 20, y: -55},
+                        style: {
+                            fill: 'rgba(80, 80, 80, 1)',
+                            stroke: {colour: 'rgba(40, 40, 40, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'arm brace 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 8, y: -15},
+                            {x: -8, y: -15},
+                            {x: -5, y: 15},
+                            {x: 5, y: 15},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: -20, y: -55},
+                        style: {
+                            fill: 'rgba(80, 80, 80, 1)',
+                            stroke: {colour: 'rgba(40, 40, 40, 1)', width: 1},
+                        },
                     },
                 ]
             },
@@ -5286,11 +6634,11 @@ const data = {
             {
                 display: `Right Pistol `,
                 description: `Adds a basic pistol to the cameraman\'s right arm`,
-                id: 2,
+                id: 3,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[2];
+                let upgrade = newPlayer.upgrades[3];
                 player = addWeapon(player, 'Pistol', 'mech', 'rightArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5303,11 +6651,11 @@ const data = {
             {
                 display: `Left Pistol `,
                 description: `Adds a basic pistol to the cameraman\'s left arm`,
-                id: 3,
+                id: 4,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[3];
+                let upgrade = newPlayer.upgrades[4];
                 player = addWeapon(player, 'Pistol', 'mech', 'leftArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5320,11 +6668,11 @@ const data = {
             {
                 display: `Right Cannon `,
                 description: `Adds a slow firing but strong cannon to the cameraman\'s right arm`,
-                id: 4,
+                id: 5,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[4];
+                let upgrade = newPlayer.upgrades[5];
                 player = addWeapon(player, 'Cannon', 'mech', 'rightArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5337,11 +6685,11 @@ const data = {
             {
                 display: `Left Cannon `,
                 description: `Adds a slow firing but strong cannon to the cameraman\'s left arm`,
-                id: 5,
+                id: 6,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[5];
+                let upgrade = newPlayer.upgrades[6];
                 player = addWeapon(player, 'Cannon', 'mech', 'leftArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5354,11 +6702,11 @@ const data = {
             {
                 display: `Right Shotgun `,
                 description: `Adds a shotgun to the cameraman\'s right arm`,
-                id: 6,
+                id: 7,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[6];
+                let upgrade = newPlayer.upgrades[7];
                 player = addWeapon(player, 'Shotgun', 'mech', 'rightArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5371,11 +6719,11 @@ const data = {
             {
                 display: `Left Shotgun `,
                 description: `Adds a shotgun to the cameraman\'s left arm`,
-                id: 7,
+                id: 8,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[7];
+                let upgrade = newPlayer.upgrades[8];
                 player = addWeapon(player, 'Shotgun', 'mech', 'leftArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5384,15 +6732,17 @@ const data = {
                 locked: false,
                 cost: 1000, 
                 increment: {cost: 0, mode: `addition`}
-            },
+            },         
+        ],
+        tier2: [
             {
                 display: `Right Semi-Auto Sniper `,
                 description: `Adds a fast firing sniper rifle to the cameraman\'s right arm`,
-                id: 8,
+                id: 9,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[8];
+                let upgrade = newPlayer.upgrades[9];
                 player = addWeapon(player, 'Rifle', 'mech', 'rightArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5405,11 +6755,11 @@ const data = {
             {
                 display: `Left Semi-Auto Sniper `,
                 description: `Adds a fast firing sniper rifle to the cameraman\'s left arm`,
-                id: 9,
+                id: 10,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[9];
+                let upgrade = newPlayer.upgrades[10];
                 player = addWeapon(player, 'Rifle', 'mech', 'leftArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5422,11 +6772,11 @@ const data = {
             {
                 display: `Right Laser Cannon `,
                 description: `Adds a powerful laser cannon to the cameraman\'s right arm`,
-                id: 10,
+                id: 11,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[10];
+                let upgrade = newPlayer.upgrades[11];
                 player = addWeapon(player, 'LaserCannon', 'mech', 'rightArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5439,11 +6789,11 @@ const data = {
             {
                 display: `Left Laser Cannon `,
                 description: `Adds a powerful laser cannon to the cameraman\'s left arm`,
-                id: 11,
+                id: 12,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[11];
+                let upgrade = newPlayer.upgrades[12];
                 player = addWeapon(player, 'LaserCannon', 'mech', 'leftArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5456,11 +6806,11 @@ const data = {
             {
                 display: `Right Heavy Sniper `,
                 description: `Adds slow firing AP sniper to the cameraman\'s right arm`,
-                id: 12,
+                id: 13,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[12];
+                let upgrade = newPlayer.upgrades[13];
                 player = addWeapon(player, 'Sniper', 'mech', 'rightArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5473,11 +6823,11 @@ const data = {
             {
                 display: `Left Heavy Sniper `,
                 description: `Adds a slow firing AP sniper to the cameraman\'s left arm`,
-                id: 13,
+                id: 14,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[13];
+                let upgrade = newPlayer.upgrades[14];
                 player = addWeapon(player, 'Sniper', 'mech', 'leftArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5487,14 +6837,16 @@ const data = {
                 cost: 3000, 
                 increment: {cost: 0, mode: `addition`}
             },
+        ],
+        tier3: [
             {
                 display: `Right Plasma Cannon `,
                 description: `Adds a powerful plasma accelerator to the cameraman\'s right arm`,
-                id: 14,
+                id: 15,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[14];
+                let upgrade = newPlayer.upgrades[15];
                 player = addWeapon(player, 'PlasmaCannon', 'mech', 'rightArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5507,11 +6859,11 @@ const data = {
             {
                 display: `Left Plasma Cannon `,
                 description: `Adds a powerful plasma accelerator to the cameraman\'s left arm`,
-                id: 15,
+                id: 16,
                 level: 1,
                 effect: `
                 var newPlayer = player;
-                let upgrade = newPlayer.upgrades[15];
+                let upgrade = newPlayer.upgrades[16];
                 player = addWeapon(player, 'PlasmaCannon', 'mech', 'leftArmMain');
                 upgrade.locked = true;
                 upgrade.level--;
@@ -5519,6 +6871,40 @@ const data = {
                 `,
                 locked: false,
                 cost: 5000, 
+                increment: {cost: 0, mode: `addition`}
+            },
+            {
+                display: `Right Railgun `,
+                description: `Adds a devastating railgun to the cameraman\'s right arm`,
+                id: 17,
+                level: 1,
+                effect: `
+                var newPlayer = player;
+                let upgrade = newPlayer.upgrades[17];
+                player = addWeapon(player, 'Railgun', 'mech', 'rightArmMain');
+                upgrade.locked = true;
+                upgrade.level--;
+                newPlayer;
+                `,
+                locked: false,
+                cost: 7500, 
+                increment: {cost: 0, mode: `addition`}
+            },
+            {
+                display: `Left Railgun `,
+                description: `Adds a devastating railgun to the cameraman\'s left arm`,
+                id: 18,
+                level: 1,
+                effect: `
+                var newPlayer = player;
+                let upgrade = newPlayer.upgrades[18];
+                player = addWeapon(player, 'Railgun', 'mech', 'leftArmMain');
+                upgrade.locked = true;
+                upgrade.level--;
+                newPlayer;
+                `,
+                locked: false,
+                cost: 7500, 
                 increment: {cost: 0, mode: `addition`}
             },
         ],
@@ -5770,8 +7156,8 @@ function levelSTDV1() {
     basicEnemy.script = 'ramAI';
 
     for (let i = 0; i < 2; i++) {
-        basicEnemy.x = randint(1000, 2000);
-        basicEnemy.y = randint(1000, 2000);
+        basicEnemy.x = randint(2000, 3500);
+        basicEnemy.y = randint(2000, 3500);
         if (randchoice([0,1])) {
             basicEnemy.x *= -1;
         }
@@ -5781,51 +7167,6 @@ function levelSTDV1() {
         entities.push(JSON.parse(JSON.stringify(basicEnemy)));
     }
     
-    let shootingEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.laserSkibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
-    shootingEnemy.team = 'Enemy';
-    shootingEnemy.script = 'shootAI';
-    for (let i = 0; i < 2; i++) {
-        shootingEnemy.x = randint(1000, 2000);
-        shootingEnemy.y = randint(1000, 2000);
-        if (randchoice([0,1])) {
-            shootingEnemy.x *= -1;
-        }
-        if (randchoice([0,1])) {
-            shootingEnemy.y *= -1;
-        }
-        entities.push(JSON.parse(JSON.stringify(shootingEnemy)));
-    }
-
-    let fastEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.jetSkibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
-    fastEnemy.team = 'Enemy';
-    fastEnemy.script = 'ramAI';
-    for (let i = 0; i < 1; i++) {
-        fastEnemy.x = randint(1000, 2000);
-        fastEnemy.y = randint(1000, 2000);
-        if (randchoice([0,1])) {
-            fastEnemy.x *= -1;
-        }
-        if (randchoice([0,1])) {
-            fastEnemy.y *= -1;
-        }
-        entities.push(JSON.parse(JSON.stringify(fastEnemy)));
-    }
-
-    let gunEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.mgSkibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
-    gunEnemy.team = 'Enemy';
-    gunEnemy.script = 'shootAI';
-    for (let i = 0; i < 2; i++) {
-        gunEnemy.x = randint(1000, 2000);
-        gunEnemy.y = randint(1000, 2000);
-        if (randchoice([0,1])) {
-            gunEnemy.x *= -1;
-        }
-        if (randchoice([0,1])) {
-            gunEnemy.y *= -1;
-        }
-        entities.push(JSON.parse(JSON.stringify(gunEnemy)));
-    }
-
     console.log('Loaded skibidi toilet tower defense V1');
 };
 
@@ -6079,18 +7420,22 @@ function handlePlayerMotion(unit, obstacles) {
             unit.vx = tankVelocity.x;
             unit.vy = tankVelocity.y;
             let res = handleGroundCollisions(unit, obstacles, true, tankVelocity);
-                if (res) {
-                    unit.x -= tankVelocity.x;
-                    unit.y -= tankVelocity.y;
-                    if (res != 'well, shit') {
-                        let tankWallVector = {x: res.end.x - res.start.x, y: res.end.y - res.start.y};
-                        let tankSlideVector = vMath(vMath(tankVelocity, tankWallVector, 'projection'), 0.9, 'multiply');
-                        unit.x += tankSlideVector.x;
-                        unit.y += tankSlideVector.y;
-                        unit.vx = tankSlideVector.x;
-                        unit.vy = tankSlideVector.y;
-                    }
+            if (res) {
+                unit.x -= tankVelocity.x;
+                unit.y -= tankVelocity.y;
+                if (res != 'well, shit') {
+                    let tankWallVector = {x: res.end.x - res.start.x, y: res.end.y - res.start.y};
+                    let tankSlideVector = vMath(vMath(tankVelocity, tankWallVector, 'projection'), 0.9, 'multiply');
+                    unit.x += tankSlideVector.x;
+                    unit.y += tankSlideVector.y;
+                    unit.vx = tankSlideVector.x;
+                    unit.vy = tankSlideVector.y;
                 }
+            }
+            if (getDist(unit, player) > 7500) {
+                unit.x = randint(2000, 5000) + player.x;
+                unit.y = randint(2000, 5000) + player.y;
+            }
             return unit;
         case 'drone':
             let droneTopSpeed = unit.v;
@@ -6371,7 +7716,7 @@ function shoot(unit, part) {
                     /*
                     bullet.vr = part.cannon.bullet.vr;
                     bullet.rDrag = part.cannon.bullet.rDrag;*/
-                    console.log(bullet);
+                    //console.log(bullet);
                     projectiles.push(bullet);
                 }
             }
@@ -6464,7 +7809,9 @@ function recursiveCollision(unit, parts, object) {
                     let s = offsetPoints(rotatePolygon([JSON.parse(JSON.stringify(obj.cSize.start)), JSON.parse(JSON.stringify(obj.cSize.end))], obj.r), obj);
                     let segment = {start: s[0], end: s[1]};
                     let diff = vMath(segment.end, segment.start, '-');
-                    for (let i = 0.1; i < 1; i += 0.2) {
+                    let step = 1 / (vMath(diff, null, '||') / 5);
+                    console.log(step);
+                    for (let i = 0; i < 1; i += step) {
                         let point = vMath(JSON.parse(JSON.stringify(segment.start)), vMath(JSON.parse(JSON.stringify(diff)), i, '*'), '+');
                         //drawCircle(display.x/2 - player.x + point.x, display.y/2 - player.y + point.y, 5, 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 2, 1);
                         //drawPolygon(points, {x: 0, y: 0}, 0, 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', false, true);
@@ -6560,7 +7907,9 @@ function handleCollisions(units, projectiles, accurate) {
                         if (getDist(ncoords, units[j]) <= units[j].collisionR) {
                             if (recursiveCollision(units[j], units[j].hitbox, np)) {
                                 units[j].hp -= projectiles[i].dmg;
-                                projectiles[i].dmg = 0;
+                                if (!projectiles[i].piercing) {
+                                    projectiles[i].dmg = 0;
+                                }
                             }
                         }
                     }
@@ -6574,7 +7923,9 @@ function handleCollisions(units, projectiles, accurate) {
                         //console.log(units[j]);
                         if (recursiveCollision(units[j], units[j].hitbox, projectiles[i])) {
                             units[j].hp -= projectiles[i].dmg;
-                            projectiles[i].dmg = 0;
+                            if (!projectiles[i].piercing) {
+                                projectiles[i].dmg = 0;
+                            }
                         }
                     }
                 }
@@ -6929,6 +8280,112 @@ function updateButtons() {
     });
 };
 
+function spawnEnemies(entities) {
+    let minEnemy = Math.min(1+Math.floor(round/5), 4);
+    let maxEnemy = Math.min(3+Math.floor(round/3), 12);
+    if (entities.length -1 < minEnemy) {
+        if (round > 20 && round % 5 == 0) {
+            data.skibidiToilet.hp++;
+            data.laserSkibidiToilet.hp++;
+            data.mgSkibidiToilet.hp++;
+            data.jetSkibidiToilet.hp++;
+            data.reinforcedSkibidiToilet.hp+=2;
+        }
+        if (round > 20 && round % 10 == 0) {
+            data.skibidiToilet.v+=0.5;
+            data.laserSkibidiToilet.v+=0.5;
+            data.mgSkibidiToilet.v+=0.5;
+            data.jetSkibidiToilet.v+=0.5;
+            data.reinforcedSkibidiToilet.v+=0.5;
+        }
+        while (entities.length -1 < maxEnemy) {   
+            if (round > 20 && randint(0,100) < 20) {
+                let fastEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.jetSkibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
+                fastEnemy.team = 'Enemy';
+                fastEnemy.script = 'ramAI';
+                for (let i = 0; i < 1; i++) {
+                    fastEnemy.x = randint(2000, 3500) + player.x;
+                    fastEnemy.y = randint(2000, 3500) + player.y;
+                    if (randchoice([0,1])) {
+                        fastEnemy.x *= -1;
+                    }
+                    if (randchoice([0,1])) {
+                        fastEnemy.y *= -1;
+                    }
+                    entities.push(JSON.parse(JSON.stringify(fastEnemy)));
+                }
+            }
+            if (round > 15 && randint(0,100) < 20) {
+                let gunEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.mgSkibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
+                gunEnemy.team = 'Enemy';
+                gunEnemy.script = 'shootAI';
+                for (let i = 0; i < 1; i++) {
+                    gunEnemy.x = randint(2000, 3500) + player.x;
+                    gunEnemy.y = randint(2000, 3500) + player.y;
+                    if (randchoice([0,1])) {
+                        gunEnemy.x *= -1;
+                    }
+                    if (randchoice([0,1])) {
+                        gunEnemy.y *= -1;
+                    }
+                    entities.push(JSON.parse(JSON.stringify(gunEnemy)));
+                }
+            }
+            if (round > 12 && randint(0,100) < 40) {
+                let strongEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.reinforcedSkibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
+                strongEnemy.team = 'Enemy';
+                strongEnemy.script = 'ramAI';
+                for (let i = 0; i < 1; i++) {
+                    strongEnemy.x = randint(2000, 3500) + player.x;
+                    strongEnemy.y = randint(2000, 3500) + player.y;
+                    if (randchoice([0,1])) {
+                        strongEnemy.x *= -1;
+                    }
+                    if (randchoice([0,1])) {
+                        strongEnemy.y *= -1;
+                    }
+                    entities.push(JSON.parse(JSON.stringify(strongEnemy)));
+                }
+            } 
+            if (round > 5 && randint(0,100) < 30) {
+                let shootingEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.laserSkibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
+                shootingEnemy.team = 'Enemy';
+                shootingEnemy.script = 'shootAI';
+                for (let i = 0; i < 1; i++) {
+                    shootingEnemy.x = randint(2000, 3500) + player.x;
+                    shootingEnemy.y = randint(2000, 3500) + player.y;
+                    if (randchoice([0,1])) {
+                        shootingEnemy.x *= -1;
+                    }
+                    if (randchoice([0,1])) {
+                        shootingEnemy.y *= -1;
+                    }
+                    entities.push(JSON.parse(JSON.stringify(shootingEnemy)));
+                }
+            } 
+            if (true) {
+                let basicEnemy = Object.assign({}, JSON.parse(JSON.stringify(data.skibidiToilet)), JSON.parse(JSON.stringify(data.template.memory)));
+                basicEnemy.team = 'Enemy';
+                basicEnemy.script = 'ramAI';
+
+                for (let i = 0; i < 1; i++) {
+                    basicEnemy.x = randint(2000, 3500) + player.x;
+                    basicEnemy.y = randint(2000, 3500) + player.y;
+                    if (randchoice([0,1])) {
+                        basicEnemy.x *= -1;
+                    }
+                    if (randchoice([0,1])) {
+                        basicEnemy.y *= -1;
+                    }
+                    entities.push(JSON.parse(JSON.stringify(basicEnemy)));
+                }
+            } 
+        }
+        round++;
+    }
+    return entities;
+};
+
 function physics() {
     shields = [];
     let newEntities = [];
@@ -6975,6 +8432,8 @@ function physics() {
     res = handleCollisions(entities, explosions, false);
     entities = res[0];
     projectiles = handleBulletWallCollisions(obstacles, projectiles);
+
+    entities = spawnEnemies(entities);
 
     let gameState = handleCheckpoint();
     return gameState;
@@ -7049,6 +8508,7 @@ function main() {
 var t=0
 var winTime = -1;
 var paused = false;
+var round = 0;
 const TPS = data.constants.TPS;
 const FPS = data.constants.FPS;
 const FPT = FPS/TPS;
