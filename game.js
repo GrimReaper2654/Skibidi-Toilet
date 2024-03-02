@@ -1188,6 +1188,82 @@ const laser = [
     },
 ];
 
+const laser2 = [
+    {
+        id: 'laserOutlineMain',
+        facing: 'body',
+        type: 'circle', 
+        rOffset: 0,
+        size: 25,
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(236, 90, 199, 0.8)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+        },
+    },
+    {
+        id: 'laserOutlineTail',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: -25, y: 0},
+            {x: 0, y: 55},
+            {x: 25, y: 0},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(236, 90, 199, 0.8)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+        },
+    },
+    {
+        id: 'laserBodyMain',
+        facing: 'body',
+        type: 'circle', 
+        rOffset: 0,
+        size: 20,
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(255, 255, 255, 0.7)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+        },
+    },
+    {
+        id: 'laserBodyTail',
+        facing: 'body',
+        type: 'polygon', 
+        rOffset: 0,
+        size: [
+            {x: -20, y: 0},
+            {x: 0, y: 50},
+            {x: 20, y: 0},
+        ],
+        scale: {x: 1, y: 1},
+        offset: {x: 0, y: 0},
+        style: {
+            fill: 'rgba(255, 255, 255, 0.7)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+        },
+    },
+    {
+        id: 'laserGlow',
+        facing: 'body',
+        type: 'circle', 
+        rOffset: 0,
+        size: 30,
+        scale: {x: 1, y: 2},
+        offset: {x: 0, y: 15},
+        style: {
+            fill: 'rgba(236, 90, 199, 0.2)',
+            stroke: {colour: 'rgba(0, 0, 0, 0)', width: 0},
+        },
+    },
+];
+
 const laserBeam = [
     {
         id: 'laserOutlineMain',
@@ -4909,7 +4985,7 @@ var data = {
                             keybind: 'click',
                             x: 0,
                             y: 0,
-                            reload: {c: 0, t: 12},
+                            reload: {c: 0, t: 15},
                             spread: Math.PI/48,
                             bullet: {
                                 v: 12,
@@ -4920,6 +4996,122 @@ var data = {
                                 cType: 'point',
                                 cSize: null,
                                 life: 60, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                ]
+            },
+            PistolMK2: {
+                parts: [
+                    {
+                        id: 'PistolMK2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -10, y: -10},
+                            {x: 10, y: -10},
+                            {x: 10, y: 30},
+                            {x: -10, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 12},
+                            spread: Math.PI/48,
+                            bullet: {
+                                v: 15,
+                                vr: 0,
+                                vDrag: 0.995,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 75, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                ]
+            },
+            PistolMK3: {
+                parts: [
+                    {
+                        id: 'PistolSide',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -10, y: 0},
+                            {x: 10, y: 0},
+                            {x: 10, y: 30},
+                            {x: -10, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: -5, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'PistolSide',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -10, y: 0},
+                            {x: 10, y: 0},
+                            {x: 10, y: 30},
+                            {x: -10, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 5, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'PistolMK3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -10, y: -10},
+                            {x: 10, y: -10},
+                            {x: 10, y: 30},
+                            {x: -10, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 10},
+                            spread: Math.PI/64,
+                            bullet: {
+                                v: 15,
+                                vr: 0,
+                                vDrag: 0.995,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 90, 
                                 dmg: 1,
                             },
                         }
@@ -4961,6 +5153,64 @@ var data = {
                                 cSize: null,
                                 life: 120, 
                                 dmg: 4,
+                            },
+                        }
+                    },
+                ]
+            },
+            CannonMK2: {
+                parts: [
+                    {
+                        id: 'CannonDeco',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -22, y: -20},
+                            {x: 22, y: -20},
+                            {x: 22, y: 30},
+                            {x: -22, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'CannonMK2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -30, y: -10},
+                            {x: 30, y: -10},
+                            {x: 30, y: 30},
+                            {x: -30, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 90},
+                            spread: Math.PI/48,
+                            bullet: {
+                                v: 12,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: cannonBall,
+                                cType: 'point',
+                                cSize: null,
+                                life: 150, 
+                                dmg: 5,
                             },
                         }
                     },
@@ -5186,6 +5436,317 @@ var data = {
                     },
                 ]
             },
+            ShotgunMK2: {
+                parts: [
+                    {
+                        id: 'ShotgunEmitter1',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(100, 100, 100, 0)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 60},
+                            spread: Math.PI/12,
+                            bullet: {
+                                v: 25,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 20, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'ShotgunEmitter2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(100, 100, 100, 0)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 60},
+                            spread: Math.PI/12,
+                            bullet: {
+                                v: 25,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 20, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'ShotgunEmitter3',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(100, 100, 100, 0)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 60},
+                            spread: Math.PI/12,
+                            bullet: {
+                                v: 25,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 20, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'ShotgunEmitter4',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(100, 100, 100, 0)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 60},
+                            spread: Math.PI/12,
+                            bullet: {
+                                v: 25,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 20, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'ShotgunEmitter5',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(100, 100, 100, 0)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 60},
+                            spread: Math.PI/12,
+                            bullet: {
+                                v: 22,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 20, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'ShotgunEmitter6',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(100, 100, 100, 0)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 60},
+                            spread: Math.PI/12,
+                            bullet: {
+                                v: 22,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 20, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'ShotgunEmitter7',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 0,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 0)',
+                            stroke: {colour: 'rgba(100, 100, 100, 0)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 60},
+                            spread: Math.PI/12,
+                            bullet: {
+                                v: 23,
+                                vr: 0,
+                                vDrag: 0.99,
+                                rDrag: 0,
+                                parts: bullet,
+                                cType: 'point',
+                                cSize: null,
+                                life: 20, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'ShotgunBarrel1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -10, y: 0},
+                            {x: 5, y: 0},
+                            {x: 5, y: 80},
+                            {x: -10, y: 80},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: -5, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'ShotgunBarrel2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -5, y: 0},
+                            {x: 10, y: 0},
+                            {x: 10, y: 80},
+                            {x: -5, y: 80},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 5, y: -150},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'ShotgunDeco1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 8, y: -5},
+                            {x: -8, y: -5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -80},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'ShotgunDeco2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 8, y: -5},
+                            {x: -8, y: -5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -95},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'ShotgunDeco3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 8, y: -5},
+                            {x: -8, y: -5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -110},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(100, 100, 100, 1)', width: 5},
+                        },
+                    },
+                ]
+            },
             LaserCannon: {
                 parts: [
                     {
@@ -5257,6 +5818,490 @@ var data = {
                                 cSize: null,
                                 life: 360, 
                                 dmg: 2,
+                            },
+                        }
+                    },
+                    {
+                        id: 'laserCannonDeco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 11, y: 4}, 
+                            {x: 14, y: 4}, 
+                            {x: 14, y: 11}, 
+                            {x: 11, y: 11}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -2, y: -70},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco2.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 11, y: 4}, 
+                            {x: 14, y: 4}, 
+                            {x: 14, y: 11}, 
+                            {x: 11, y: 11}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 52, y: -70},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 14, y: 2.5}, 
+                            {x: 14.5, y: 2}, 
+                            {x: 17.5, y: 2}, 
+                            {x: 18, y: 2.5}, 
+                            {x: 18, y: 12.5}, 
+                            {x: 17.5, y: 13}, 
+                            {x: 14.5, y: 13}, 
+                            {x: 14, y: 12.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -2, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco2.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 14, y: 2.5}, 
+                            {x: 14.5, y: 2}, 
+                            {x: 17.5, y: 2}, 
+                            {x: 18, y: 2.5}, 
+                            {x: 18, y: 12.5}, 
+                            {x: 17.5, y: 13}, 
+                            {x: 14.5, y: 13}, 
+                            {x: 14, y: 12.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 66, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBody',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -11, y: 0}, 
+                            {x: 11, y: 0}, 
+                            {x: 11, y: 14}, 
+                            {x: 9, y: 16}, 
+                            {x: -9, y: 16}, 
+                            {x: -11, y: 14}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 0.5}, 
+                            {x: -9.5, y: 0}, 
+                            {x: 9.5, y: 0}, 
+                            {x: 10, y: 0.5}, 
+                            {x: 10, y: 4.5}, 
+                            {x: 9.5, y: 5}, 
+                            {x: -9.5, y: 5}, 
+                            {x: -10, y: 4.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -117},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 0.5}, 
+                            {x: -9.5, y: 0}, 
+                            {x: 9.5, y: 0}, 
+                            {x: 10, y: 0.5}, 
+                            {x: 10, y: 4.5}, 
+                            {x: 9.5, y: 5}, 
+                            {x: -9.5, y: 5}, 
+                            {x: -10, y: 4.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -138},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 1}, 
+                            {x: -9, y: 0}, 
+                            {x: 9, y: 0}, 
+                            {x: 10, y: 1}, 
+                            {x: 10, y: 8}, 
+                            {x: 9, y: 9}, 
+                            {x: -9, y: 9}, 
+                            {x: -10, y: 8}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -168},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                ]
+            },
+            LaserCannonMK2: {
+                parts: [
+                    {
+                        id: 'laserCannonBarrelSide1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 0}, 
+                            {x: 3, y: 0}, 
+                            {x: 3, y: -50}, 
+                            {x: -3, y: -50}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 10, y: -70},
+                        style: {
+                            fill: 'rgba(190, 190, 190, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelSide2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 0}, 
+                            {x: 3, y: 0}, 
+                            {x: 3, y: -50}, 
+                            {x: -3, y: -50}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -10, y: -70},
+                        style: {
+                            fill: 'rgba(190, 190, 190, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelMain',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 30}, 
+                            {x: 3, y: 30}, 
+                            {x: 3, y: 80}, 
+                            {x: -3, y: 80}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -230},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 8},
+                            spread: Math.PI/48,
+                            bullet: {
+                                v: 30,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: laser,
+                                cType: 'point',
+                                cSize: null,
+                                life: 360, 
+                                dmg: 2,
+                            },
+                        }
+                    },
+                    {
+                        id: 'laserCannonDeco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 11, y: 4}, 
+                            {x: 14, y: 4}, 
+                            {x: 14, y: 11}, 
+                            {x: 11, y: 11}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -2, y: -70},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco2.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 11, y: 4}, 
+                            {x: 14, y: 4}, 
+                            {x: 14, y: 11}, 
+                            {x: 11, y: 11}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 52, y: -70},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 14, y: 2.5}, 
+                            {x: 14.5, y: 2}, 
+                            {x: 17.5, y: 2}, 
+                            {x: 18, y: 2.5}, 
+                            {x: 18, y: 12.5}, 
+                            {x: 17.5, y: 13}, 
+                            {x: 14.5, y: 13}, 
+                            {x: 14, y: 12.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -2, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonDeco2.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: 14, y: 2.5}, 
+                            {x: 14.5, y: 2}, 
+                            {x: 17.5, y: 2}, 
+                            {x: 18, y: 2.5}, 
+                            {x: 18, y: 12.5}, 
+                            {x: 17.5, y: 13}, 
+                            {x: 14.5, y: 13}, 
+                            {x: 14, y: 12.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 66, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBody',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -11, y: 0}, 
+                            {x: 11, y: 0}, 
+                            {x: 11, y: 14}, 
+                            {x: 9, y: 16}, 
+                            {x: -9, y: 16}, 
+                            {x: -11, y: 14}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -70},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 0.5}, 
+                            {x: -9.5, y: 0}, 
+                            {x: 9.5, y: 0}, 
+                            {x: 10, y: 0.5}, 
+                            {x: 10, y: 4.5}, 
+                            {x: 9.5, y: 5}, 
+                            {x: -9.5, y: 5}, 
+                            {x: -10, y: 4.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -117},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 0.5}, 
+                            {x: -9.5, y: 0}, 
+                            {x: 9.5, y: 0}, 
+                            {x: 10, y: 0.5}, 
+                            {x: 10, y: 4.5}, 
+                            {x: 9.5, y: 5}, 
+                            {x: -9.5, y: 5}, 
+                            {x: -10, y: 4.5}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -138},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelDeco3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: Math.PI,
+                        size: [
+                            {x: -10, y: 1}, 
+                            {x: -9, y: 0}, 
+                            {x: 9, y: 0}, 
+                            {x: 10, y: 1}, 
+                            {x: 10, y: 8}, 
+                            {x: 9, y: 9}, 
+                            {x: -9, y: 9}, 
+                            {x: -10, y: 8}, 
+                        ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -168},
+                        style: {
+                            fill: 'rgba(230, 73, 38, 1)',
+                            stroke: {colour: 'rgba(201, 63, 33, 1)', width: 2},
+                        },
+                    },
+                ]
+            },
+            LaserCannonMK3: {
+                parts: [
+                    {
+                        id: 'laserCannonBarrelSide1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 0}, 
+                            {x: 3, y: 0}, 
+                            {x: 3, y: -50}, 
+                            {x: -3, y: -50}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 10, y: -70},
+                        style: {
+                            fill: 'rgba(190, 190, 190, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelSide2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 0}, 
+                            {x: 3, y: 0}, 
+                            {x: 3, y: -50}, 
+                            {x: -3, y: -50}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: -10, y: -70},
+                        style: {
+                            fill: 'rgba(190, 190, 190, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                    },
+                    {
+                        id: 'laserCannonBarrelMain',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -3, y: 30}, 
+                            {x: 3, y: 30}, 
+                            {x: 3, y: 80}, 
+                            {x: -3, y: 80}, 
+                            ],
+                        scale: {x: 2, y: 2},
+                        offset: {x: 0, y: -230},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 2},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 6},
+                            spread: Math.PI/48,
+                            bullet: {
+                                v: 50,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: laser2,
+                                cType: 'point',
+                                cSize: null,
+                                life: 360, 
+                                dmg: 3,
                             },
                         }
                     },
@@ -5799,6 +6844,442 @@ var data = {
                                 cSize: null,
                                 life: 45, 
                                 dmg: 0.5,
+                            },
+                        }
+                    },
+                    {
+                        id: 'Plasma Cannon Base',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -22, y: 0},
+                            {x: 22, y: 0},
+                            {x: 25, y: 30},
+                            {x: -25, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Side 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -18, y: 0},
+                            {x: -15, y: 0},
+                            {x: -12, y: 90},
+                            {x: -28, y: 125},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -170},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Side 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 18, y: 0},
+                            {x: 15, y: 0},
+                            {x: 12, y: 90},
+                            {x: 28, y: 125},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -170},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -140},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -130},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -120},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 9,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow1',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 35,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 25,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow3',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 15,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                ]
+            },
+            PlasmaCannonMK2: {
+                parts: [
+                    {
+                        id: 'Plasma Cannon Placeholder',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -5, y: 0},
+                            {x: 5, y: 0},
+                            {x: 5, y: 80},
+                            {x: -5, y: 80},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(175, 175, 175, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 1},
+                            spread: Math.PI/36,
+                            bullet: {
+                                v: 30,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: plasmaBlast,
+                                cType: 'point',
+                                cSize: null,
+                                life: 60, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'Plasma Cannon Base',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -22, y: 0},
+                            {x: 22, y: 0},
+                            {x: 25, y: 30},
+                            {x: -25, y: 30},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -100},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Side 1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -18, y: 0},
+                            {x: -15, y: 0},
+                            {x: -12, y: 90},
+                            {x: -28, y: 125},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -170},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Side 2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: 18, y: 0},
+                            {x: 15, y: 0},
+                            {x: 12, y: 90},
+                            {x: 28, y: 125},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -170},
+                        style: {
+                            fill: 'rgba(150, 150, 150, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.1',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -140},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.2',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -130},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco1.3',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -8, y: 0},
+                            {x: 8, y: 0},
+                            {x: 5, y: 5},
+                            {x: -5, y: 5},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -120},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Deco2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 9,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(200, 200, 200, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 1},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow1',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 35,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow2',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 25,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                    {
+                        id: 'Plasma Cannon Glow3',
+                        facing: 'turret',
+                        type: 'circle', 
+                        rOffset: 0,
+                        size: 15,
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -160},
+                        style: {
+                            fill: 'rgba(236, 90, 199, 0.1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 0)', width: 0},
+                        },
+                    },
+                ]
+            },
+            PlasmaCannonMK3: {
+                parts: [
+                    {
+                        id: 'Plasma Cannon Emitter',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -5, y: 0},
+                            {x: 5, y: 0},
+                            {x: 5, y: 80},
+                            {x: -5, y: 80},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(175, 175, 175, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 1},
+                            spread: Math.PI/36,
+                            bullet: {
+                                v: 40,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: plasmaBlast,
+                                cType: 'point',
+                                cSize: null,
+                                life: 60, 
+                                dmg: 1,
+                            },
+                        }
+                    },
+                    {
+                        id: 'Plasma Cannon Emitter',
+                        facing: 'turret',
+                        type: 'polygon', 
+                        rOffset: 0,
+                        size: [
+                            {x: -5, y: 0},
+                            {x: 5, y: 0},
+                            {x: 5, y: 80},
+                            {x: -5, y: 80},
+                        ],
+                        scale: {x: 1, y: 1},
+                        offset: {x: 0, y: -150},
+                        style: {
+                            fill: 'rgba(175, 175, 175, 1)',
+                            stroke: {colour: 'rgba(125, 125, 125, 1)', width: 5},
+                        },
+                        cannon: {
+                            keybind: 'click',
+                            x: 0,
+                            y: 0,
+                            reload: {c: 0, t: 1},
+                            spread: Math.PI/36,
+                            bullet: {
+                                v: 40,
+                                vr: 0,
+                                vDrag: 1,
+                                rDrag: 0,
+                                parts: plasmaBlast,
+                                cType: 'point',
+                                cSize: null,
+                                life: 60, 
+                                dmg: 1,
                             },
                         }
                     },
@@ -6635,18 +8116,24 @@ var data = {
                 display: `Right Pistol `,
                 description: `Adds a basic pistol to the cameraman\'s right arm`,
                 id: 3,
-                level: 1,
+                level: 2,
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[3];
-                player = addWeapon(player, 'Pistol', 'mech', 'rightArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'Pistol', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's pistol";
+                    player = addWeapon(player, 'PistolMK2', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'PistolMK3', 'mech', 'rightArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
-                locked: true,
-                cost: 200, 
-                increment: {cost: 0, mode: `addition`}
+                locked: false,
+                cost: 450, 
+                increment: {cost: 250, mode: `addition`}
             },
             {
                 display: `Left Pistol `,
@@ -6656,14 +8143,20 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[4];
-                player = addWeapon(player, 'Pistol', 'mech', 'leftArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'Pistol', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's pistol";
+                    player = addWeapon(player, 'PistolMK2', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'PistolMK3', 'mech', 'leftArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
                 cost: 200, 
-                increment: {cost: 0, mode: `addition`}
+                increment: {cost: 250, mode: `addition`}
             },
             {
                 display: `Right Cannon `,
@@ -6673,14 +8166,21 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[5];
-                player = addWeapon(player, 'Cannon', 'mech', 'rightArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'Cannon', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's cannon";
+                    player = addWeapon(player, 'CannonMK2', 'mech', 'rightArmMain');
+                    upgrade.locked = true;
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'CannonMK3', 'mech', 'rightArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
                 cost: 500, 
-                increment: {cost: 0, mode: `addition`}
+                increment: {cost: 150, mode: `addition`}
             },
             {
                 display: `Left Cannon `,
@@ -6690,14 +8190,21 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[6];
-                player = addWeapon(player, 'Cannon', 'mech', 'leftArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'Cannon', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's cannon";
+                    player = addWeapon(player, 'CannonMK2', 'mech', 'leftArmMain');
+                    upgrade.locked = true;
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'CannonMK3', 'mech', 'leftArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
                 cost: 500, 
-                increment: {cost: 0, mode: `addition`}
+                increment: {cost: 150, mode: `addition`}
             },
             {
                 display: `Right Shotgun `,
@@ -6707,14 +8214,21 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[7];
-                player = addWeapon(player, 'Shotgun', 'mech', 'rightArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'Shotgun', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's shotgun";
+                    player = addWeapon(player, 'ShotgunMK2', 'mech', 'rightArmMain');
+                    upgrade.locked = true;
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'ShotgunMK3', 'mech', 'rightArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
-                cost: 1000, 
-                increment: {cost: 0, mode: `addition`}
+                cost: 600, 
+                increment: {cost: 500, mode: `addition`}
             },
             {
                 display: `Left Shotgun `,
@@ -6724,14 +8238,21 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[8];
-                player = addWeapon(player, 'Shotgun', 'mech', 'leftArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'Shotgun', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's shotgun";
+                    player = addWeapon(player, 'ShotgunMK2', 'mech', 'leftArmMain');
+                    upgrade.locked = true;
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'ShotgunMK3', 'mech', 'leftArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
-                cost: 1000, 
-                increment: {cost: 0, mode: `addition`}
+                cost: 600, 
+                increment: {cost: 500, mode: `addition`}
             },         
         ],
         tier2: [
@@ -6777,14 +8298,21 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[11];
-                player = addWeapon(player, 'LaserCannon', 'mech', 'rightArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'LaserCannon', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's laser cannon";
+                    upgrade.cost += 2500;
+                    player = addWeapon(player, 'LaserCannonMK2', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'LaserCannonMK3', 'mech', 'rightArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
                 cost: 2500, 
-                increment: {cost: 0, mode: `addition`}
+                increment: {cost: -1000, mode: `addition`}
             },
             {
                 display: `Left Laser Cannon `,
@@ -6794,14 +8322,21 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[12];
-                player = addWeapon(player, 'LaserCannon', 'mech', 'leftArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'LaserCannon', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's laser cannon";
+                    upgrade.cost += 2500;
+                    player = addWeapon(player, 'LaserCannonMK2', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'LaserCannonMK3', 'mech', 'leftArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
                 cost: 2500, 
-                increment: {cost: 0, mode: `addition`}
+                increment: {cost: -1000, mode: `addition`}
             },
             {
                 display: `Right Heavy Sniper `,
@@ -6847,14 +8382,20 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[15];
-                player = addWeapon(player, 'PlasmaCannon', 'mech', 'rightArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'PlasmaCannon', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's plasma cannon";
+                    player = addWeapon(player, 'PlasmaCannonMK2', 'mech', 'rightArmMain');
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'PlasmaCannonMK3', 'mech', 'rightArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
                 cost: 5000, 
-                increment: {cost: 0, mode: `addition`}
+                increment: {cost: 2500, mode: `addition`}
             },
             {
                 display: `Left Plasma Cannon `,
@@ -6864,14 +8405,20 @@ var data = {
                 effect: `
                 var newPlayer = player;
                 let upgrade = newPlayer.upgrades[16];
-                player = addWeapon(player, 'PlasmaCannon', 'mech', 'leftArmMain');
-                upgrade.locked = true;
-                upgrade.level--;
+                if (upgrade.level == 1) {
+                    player = addWeapon(player, 'PlasmaCannon', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 2) {
+                    upgrade.description = "Improve the cameraman's plasma cannon";
+                    player = addWeapon(player, 'PlasmaCannonMK2', 'mech', 'leftArmMain');
+                } else if (upgrade.level == 3) {
+                    player = addWeapon(player, 'PlasmaCannonMK3', 'mech', 'leftArmMain');
+                    upgrade.locked = true;
+                }
                 newPlayer;
                 `,
                 locked: false,
                 cost: 5000, 
-                increment: {cost: 0, mode: `addition`}
+                increment: {cost: 2500, mode: `addition`}
             },
             {
                 display: `Right Railgun `,
@@ -7810,7 +9357,7 @@ function recursiveCollision(unit, parts, object) {
                     let segment = {start: s[0], end: s[1]};
                     let diff = vMath(segment.end, segment.start, '-');
                     let step = 1 / (vMath(diff, null, '||') / 5);
-                    console.log(step);
+                    //console.log(step);
                     for (let i = 0; i < 1; i += step) {
                         let point = vMath(JSON.parse(JSON.stringify(segment.start)), vMath(JSON.parse(JSON.stringify(diff)), i, '*'), '+');
                         //drawCircle(display.x/2 - player.x + point.x, display.y/2 - player.y + point.y, 5, 'rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)', 2, 1);
