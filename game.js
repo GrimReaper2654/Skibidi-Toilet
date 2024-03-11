@@ -16263,7 +16263,7 @@ function updateButtons() {
 };
 
 function generatePos(entity) {
-    let dist = randint(1000, 1001);
+    let dist = randint(2000, 2500);
     let r = randint(0, 360);
     r = r / 180 * Math.PI;
     let x = dist*Math.cos(r);
