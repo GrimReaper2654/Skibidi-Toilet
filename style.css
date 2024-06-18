@@ -97,3 +97,30 @@ body {
     border-radius: 5px;
     white-space: pre-line;
 }
+
+#big {
+    /* grid display */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* rows */
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+    /* height of elements */
+    height: 12rem;
+    /* padding/margin */
+    padding: 10px;
+    margin: 10px;
+}
+
+#big button {
+    border-radius: 5px;
+    outline: none;
+    /* no button decorations */
+    border: none;
+    /* background color */
+    cursor: pointer;
+}
+
+#big button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
