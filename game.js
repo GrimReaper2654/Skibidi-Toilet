@@ -48,7 +48,7 @@
    - plasma cannon t4 fires piercing plasma bolts
    - plasma cannon t4 projectile speed increased 30 -> 45
    - laser cannon t4 damage reduced 2 -> 1
- • 
+ • Scaling is much more aggressive
 
 ---------------------------------------------------------------------------------------------------------------------
 */
@@ -16275,35 +16275,63 @@ function spawnEnemies(entities) {
     let minEnemy = Math.min(1+Math.floor(round/5)+data.constants.extraEnemies, 4+data.constants.extraEnemies);
     let maxEnemy = Math.min(3+Math.floor(round/3)+data.constants.extraEnemies, 12+data.constants.extraEnemies);
     if (entities.length -1 < minEnemy) {
-        if (round > 5 && round % 5 == 0) {
-            data.skibidiToilet.hp++;
-            data.laserSkibidiToilet.hp++;
-            data.mgSkibidiToilet.hp++;
-            data.jetSkibidiToilet.hp++;
-            data.reinforcedSkibidiToilet.hp+=2;
+        if (round > 100) {
+            if (round > 200) {
+                data.skibidiToilet.hp = Math.ceil(data.skibidiToilet.hp * 1.1);
+                data.laserSkibidiToilet.hp = Math.ceil(data.laserSkibidiToilet.hp * 1.1);
+                data.mgSkibidiToilet.hp = Math.ceil(data.mgSkibidiToilet.hp * 1.1);
+                data.jetSkibidiToilet.hp = Math.ceil(data.jetSkibidiToilet.hp * 1.1);
+                data.reinforcedSkibidiToilet.hp = Math.ceil(data.reinforcedSkibidiToilet.hp * 1.1);
+            } else {
+                data.skibidiToilet.hp = Math.ceil(data.skibidiToilet.hp * 1.05);
+                data.laserSkibidiToilet.hp = Math.ceil(data.laserSkibidiToilet.hp * 1.05);
+                data.mgSkibidiToilet.hp = Math.ceil(data.mgSkibidiToilet.hp * 1.05);
+                data.jetSkibidiToilet.hp = Math.ceil(data.jetSkibidiToilet.hp * 1.05);
+                data.reinforcedSkibidiToilet.hp = Math.ceil(data.reinforcedSkibidiToilet.hp * 1.05);
+            }
+        } else {
+            if (round > 5 && round % 5 == 0) {
+                data.skibidiToilet.hp++;
+            }
+            if (round > 10 && round % 5 == 0) {
+                data.laserSkibidiToilet.hp++;
+                data.reinforcedSkibidiToilet.hp+=2;
+            }
+            if (round > 15 && round % 5 == 0) {
+                data.skibidiToilet.hp++;
+                data.laserSkibidiToilet.hp++;
+                data.mgSkibidiToilet.hp++;
+                data.reinforcedSkibidiToilet.hp+=5;
+            }
+            if (round > 30 && round % 5 == 0) {
+                data.skibidiToilet.hp++;
+                data.laserSkibidiToilet.hp++;
+                data.mgSkibidiToilet.hp++;
+                data.jetSkibidiToilet.hp+=2;
+            }
+            if (round > 40 && round % 5 == 0) {
+                data.skibidiToilet.hp+=5;
+                data.laserSkibidiToilet.hp+=5;
+                data.mgSkibidiToilet.hp+=5;
+                data.jetSkibidiToilet.hp+=5;
+                data.reinforcedSkibidiToilet.hp+=10;
+            }
+            if (round > 50 && round % 5 == 0) {
+                data.skibidiToilet.hp+=10;
+                data.laserSkibidiToilet.hp+=10;
+                data.mgSkibidiToilet.hp+=10;
+                data.jetSkibidiToilet.hp+=10;
+                data.reinforcedSkibidiToilet.hp+=10;
+            }
+            if (round > 75 && round % 5 == 0) {
+                data.skibidiToilet.hp+=25;
+                data.laserSkibidiToilet.hp+=25;
+                data.mgSkibidiToilet.hp+=25;
+                data.jetSkibidiToilet.hp+=25;
+                data.reinforcedSkibidiToilet.hp+=100;
+            }
         }
-        if (round > 30 && round % 5 == 0) {
-            data.skibidiToilet.hp++;
-            data.laserSkibidiToilet.hp++;
-            data.mgSkibidiToilet.hp++;
-            data.jetSkibidiToilet.hp++;
-            data.reinforcedSkibidiToilet.hp+=2;
-        }
-        if (round > 50 && round % 5 == 0) {
-            data.skibidiToilet.hp+=5;
-            data.laserSkibidiToilet.hp+=5;
-            data.mgSkibidiToilet.hp+=5;
-            data.jetSkibidiToilet.hp+=5;
-            data.reinforcedSkibidiToilet.hp+=10;
-        }
-        if (round > 100 && round % 5 == 0) {
-            data.skibidiToilet.hp+=25;
-            data.laserSkibidiToilet.hp+=25;
-            data.mgSkibidiToilet.hp+=25;
-            data.jetSkibidiToilet.hp+=25;
-            data.reinforcedSkibidiToilet.hp+=100;
-        }
-        if (round > 10 && round % 10 == 0 && data.skibidiToilet.v < 15) {
+        if (round > 10 && round % 10 == 0 && data.skibidiToilet.v < 20) {
             data.skibidiToilet.v+=1;
             data.laserSkibidiToilet.v+=1;
             data.mgSkibidiToilet.v+=1;
